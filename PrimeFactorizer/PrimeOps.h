@@ -2,7 +2,7 @@
 #include "stdafx.h"
 
 using namespace std;
-
+//basic base class
 class PrimeOps
 {
 public:

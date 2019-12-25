@@ -4,7 +4,7 @@
 #include "PrimeDivisor.h"
 
 using namespace std;
-
+//factorizer for a single int
 class PrimeFactor
 {
 public:

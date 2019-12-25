@@ -1,6 +1,6 @@
 #include "Fraction.h"
 
-Fraction::Fraction(int Mo, string FN)
+Fraction::Fraction(int Mo, string FN)//have itmake the correct things
 {
 }
 
@@ -15,7 +15,7 @@ void Fraction::setFraction(uint64_t numer, uint64_t denom)
 	denominatorI = denom;
 }
 
-string Fraction::SiplifyFraction()
+string Fraction::SiplifyFraction()//returns a new string for in the form numerator/denominator ready for printing
 {
 	CnFrac();
 	string g_string;
@@ -27,10 +27,12 @@ string Fraction::SiplifyFraction()
 
 void Fraction::STRto2INT(string input)
 {
-
+// str:	 	   numerator/denominator
+//			    /				  \
+//uint64_t: numeratorI	   ,	  denominatorI
 }
 
-void Fraction::CnFrac()
+void Fraction::CnFrac()//calculates the new fraction by way of prime factorization
 {
 	uint64_t t_numerI = 0, t_denomI = 0;
 

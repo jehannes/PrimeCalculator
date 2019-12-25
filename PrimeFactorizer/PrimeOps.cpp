@@ -1,10 +1,10 @@
 #include "PrimeOps.h"
 
-PrimeOps::PrimeOps() :CurPrime(0), runtype(false)
+PrimeOps::PrimeOps() :CurPrime(0), runtype(false)//constructor without library loading 
 {
 }
 
-PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)
+PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with library loading 
 {
 	fstream fs;
 	string str;

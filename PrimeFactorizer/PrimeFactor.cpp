@@ -4,7 +4,11 @@ PrimeFactor::PrimeFactor() : Check(new PrimeCheck()), Div(new PrimeDivisor), fl(
 {
 }
 
-PrimeFactor::PrimeFactor(int mode) : fl(false)
+PrimeFactor::~PrimeFactor()
+{
+}
+
+PrimeFactor::PrimeFactor(int mode) : fl(false)//choose library
 {
 	string fname = "Primes";
 	string check = "Primes";
@@ -40,11 +44,7 @@ PrimeFactor::PrimeFactor(int mode) : fl(false)
 	}
 }
 
-PrimeFactor::~PrimeFactor()
-{
-}
-
-vector<uint64_t> PrimeFactor::factor(uint64_t num)
+vector<uint64_t> PrimeFactor::factor(uint64_t num)//factorize number
 {
 	while (num > 1) {
 		if (fl == false) {

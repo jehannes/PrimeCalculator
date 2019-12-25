@@ -12,7 +12,7 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 	if (Checker->is_prime(input)) {
 		return input;
 	}
-	if (PrimeOps::runtype) {
+	if (PrimeOps::runtype) {//determines if there is a library or not
 
 		for (int i = 0; i < PrimeOps::pvec.size(); ++i) {
 			if (input % PrimeOps::pvec.at(i) == 0 && input > PrimeOps::pvec.at(i)) {
@@ -22,6 +22,7 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 				break;
 			}
 		}
+
 		uint64_t DivPrime = FnPrime();
 
 		while (DivPrime <= input) {
@@ -32,9 +33,7 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 			DivPrime = FnPrime();
 		}
 		PrimeOps::CurPrime = 0;
-		return 1;
-		//if the divisor goes beyond the vector it should revert to calculating the outcome, maybe as start point the last point in the vector
-		//return 1;
+		return 1;//it really shouldn't get here
 	}
 	else {
 		uint64_t DivPrime = FnPrime();
@@ -48,7 +47,7 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 			DivPrime = FnPrime();
 		}
 		PrimeOps::CurPrime = 0;
-		return 1;
+		return 1;//it really shouldn't get here
 	}
 }
 
