@@ -17,7 +17,7 @@ bool PrimeCheck::is_prime(uint_fast64_t input) {
 				return true;
 			}
 		}
-		for (uint_fast64_t j = 2;(uint_fast64_t) (j < sqrt(input)+1); j++) {
+		for (uint_fast64_t j = 2; (uint_fast64_t)(j < sqrt(input) + 1); j++) {
 			if (input % j == 0) {
 				return false;
 			}

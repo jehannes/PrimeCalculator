@@ -13,8 +13,7 @@ PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with libr
 
 	system("CLS");
 	cout << "loading primes library..." << endl;
-	
-	
+
 
 	if (fs.is_open())
 

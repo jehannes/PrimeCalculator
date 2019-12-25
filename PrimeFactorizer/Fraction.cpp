@@ -1,6 +1,6 @@
 #include "Fraction.h"
 
-Fraction::Fraction(int Mo):PF(new PrimeFactor(Mo)),numeratorI(0),denominatorI(0)//have it make the correct things
+Fraction::Fraction(int Mo) :PF(new PrimeFactor(Mo)), numeratorI(0), denominatorI(0)//have it make the correct things
 {
 }
 
@@ -27,20 +27,20 @@ string Fraction::SiplifyFraction()//returns a new string for in the form numerat
 
 void Fraction::STRto2INT(string input)
 {
-//somehow do this:
-//string:	 	   numerator/denominator
-//				    /				  \
-//uint_fast64_t: numeratorI	   ,	  denominatorI
-	string temp="";
+	//somehow do this:
+	//string:	 	   numerator/denominator
+	//				    /				  \
+	//uint_fast64_t: numeratorI	   ,	  denominatorI
+	string temp = "";
 
-	for (int i = 0;;i++) {
+	for (int i = 0;; i++) {
 		if (input.at(i) == (char)*"/") {
 			for (int j = 0; j <= i; j++) {
 				input.erase(j);
 			}
 			break;
 		}
-		
+
 		temp.append((const char*)&input.at(i));//does this work?
 
 	}
@@ -65,7 +65,7 @@ void Fraction::CnFrac()//calculates the new fraction by way of prime factorizati
 			}
 		}
 	}
-	
+
 
 	for (uint_fast64_t i : numerator)
 		t_numerI *= i;
