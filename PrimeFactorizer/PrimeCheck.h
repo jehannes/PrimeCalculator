@@ -10,7 +10,7 @@ class PrimeCheck :
 public:
 	PrimeCheck();
 	PrimeCheck(string b);
-	bool is_prime(uint64_t input);
+	bool is_prime(uint_fast64_t input);
 	
 };
 

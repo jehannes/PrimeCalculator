@@ -11,10 +11,10 @@ class PrimeDivisor :
 public:
 	PrimeDivisor();
 	PrimeDivisor(string b);
-	uint64_t N_Div(uint64_t input);
+	uint_fast64_t N_Div(uint_fast64_t input);
 	
 private:
-	uint64_t FnPrime();
+	uint_fast64_t FnPrime();
 	unique_ptr <PrimeCheck> Checker;
 };
 

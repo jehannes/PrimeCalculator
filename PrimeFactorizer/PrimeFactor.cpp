@@ -44,7 +44,7 @@ PrimeFactor::PrimeFactor(int mode) : fl(false)//choose library
 	}
 }
 
-vector<uint64_t> PrimeFactor::factor(uint64_t num)//factorize number
+vector<uint_fast64_t> PrimeFactor::factor(uint_fast64_t num)//factorize number
 {
 	while (num > 1) {
 		if (fl == false) {
@@ -61,7 +61,7 @@ vector<uint64_t> PrimeFactor::factor(uint64_t num)//factorize number
 				}
 		}
 		else {
-			uint64_t divisor = 0;
+			uint_fast64_t divisor = 0;
 			divisor = Div->N_Div(num);
 			Divisors.push_back(divisor);
 			num /= divisor;

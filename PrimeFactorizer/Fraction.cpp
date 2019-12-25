@@ -1,6 +1,6 @@
 #include "Fraction.h"
 
-Fraction::Fraction(int Mo, string FN)//have itmake the correct things
+Fraction::Fraction(int Mo):PF(new PrimeFactor(Mo)),numeratorI(0),denominatorI(0)//have it make the correct things
 {
 }
 
@@ -9,7 +9,7 @@ void Fraction::setFraction(string input)
 	STRto2INT(input);
 }
 
-void Fraction::setFraction(uint64_t numer, uint64_t denom)
+void Fraction::setFraction(uint_fast64_t numer, uint_fast64_t denom)
 {
 	numeratorI = numer;
 	denominatorI = denom;
@@ -27,20 +27,38 @@ string Fraction::SiplifyFraction()//returns a new string for in the form numerat
 
 void Fraction::STRto2INT(string input)
 {
-// str:	 	   numerator/denominator
-//			    /				  \
-//uint64_t: numeratorI	   ,	  denominatorI
+//somehow do this:
+//string:	 	   numerator/denominator
+//				    /				  \
+//uint_fast64_t: numeratorI	   ,	  denominatorI
+	string temp="";
+
+	for (int i = 0;;i++) {
+		if (input.at(i) == (char)*"/") {
+			for (int j = 0; j <= i; j++) {
+				input.erase(j);
+			}
+			break;
+		}
+		
+		temp.append((const char*)&input.at(i));//does this work?
+
+	}
+
+	numeratorI = stoi(temp);
+	denominatorI = stoi(input);
+
 }
 
 void Fraction::CnFrac()//calculates the new fraction by way of prime factorization
 {
-	uint64_t t_numerI = 0, t_denomI = 0;
+	uint_fast64_t t_numerI = 0, t_denomI = 0;
 
 	numerator = PF->factor(numeratorI);
 	denominator = PF->factor(denominatorI);
 
-	for (vector <uint64_t>::iterator it_1 = numerator.begin(); it_1 != numerator.end(); it_1++) {
-		for (vector <uint64_t>::iterator it_2 = denominator.begin(); it_2 != denominator.end(); it_2++) {
+	for (vector <uint_fast64_t>::iterator it_1 = numerator.begin(); it_1 != numerator.end(); it_1++) {
+		for (vector <uint_fast64_t>::iterator it_2 = denominator.begin(); it_2 != denominator.end(); it_2++) {
 			if (*it_1 == *it_2) {
 				numerator.erase(it_1);
 				denominator.erase(it_2);
@@ -49,10 +67,10 @@ void Fraction::CnFrac()//calculates the new fraction by way of prime factorizati
 	}
 	
 
-	for (uint64_t i : numerator)
+	for (uint_fast64_t i : numerator)
 		t_numerI *= i;
 
-	for (uint64_t i : denominator)
+	for (uint_fast64_t i : denominator)
 		t_denomI *= i;
 
 	numeratorI = t_numerI;

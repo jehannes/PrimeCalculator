@@ -10,8 +10,8 @@ public:
 	PrimeOps(string b);
 
 protected:
-	uint64_t CurPrime;
-	vector <uint64_t> pvec;
+	uint_fast64_t CurPrime;
+	vector <uint_fast64_t> pvec;
 	bool runtype;
 };
 

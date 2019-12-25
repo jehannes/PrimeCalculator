@@ -8,7 +8,7 @@ PrimeDivisor::PrimeDivisor(string b) : PrimeOps(b), Checker(new PrimeCheck())
 {
 }
 
-uint64_t PrimeDivisor::N_Div(uint64_t input) {
+uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 	if (Checker->is_prime(input)) {
 		return input;
 	}
@@ -23,7 +23,7 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 			}
 		}
 
-		uint64_t DivPrime = FnPrime();
+		uint_fast64_t DivPrime = FnPrime();
 
 		while (DivPrime <= input) {
 			if (input % DivPrime == 0) {
@@ -36,7 +36,7 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 		return 1;//it really shouldn't get here
 	}
 	else {
-		uint64_t DivPrime = FnPrime();
+		uint_fast64_t DivPrime = FnPrime();
 
 
 		while (DivPrime <= input) {
@@ -51,8 +51,8 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 	}
 }
 
-uint64_t PrimeDivisor::FnPrime() {
-	uint64_t number = 2;
+uint_fast64_t PrimeDivisor::FnPrime() {
+	uint_fast64_t number = 2;
 	while (true) {
 		if (Checker->is_prime(number) && number > PrimeOps::CurPrime) {
 			break;

@@ -13,7 +13,8 @@ PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with libr
 
 	system("CLS");
 	cout << "loading primes library..." << endl;
-
+	
+	
 
 	if (fs.is_open())
 
@@ -22,7 +23,7 @@ PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with libr
 				break;
 			}
 			else {
-				pvec.push_back((uint64_t)stoi(str));
+				pvec.push_back((uint_fast64_t)stoi(str));
 			}
 		}
 

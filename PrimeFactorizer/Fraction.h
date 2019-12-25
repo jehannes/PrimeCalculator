@@ -7,15 +7,16 @@
 class Fraction
 {
 public:
-	Fraction(int Mo,string FN);
+	Fraction(int Mo);
 	void setFraction(string input);
-	void setFraction(uint64_t numer, uint64_t denom);
+	void setFraction(uint_fast64_t numer, uint_fast64_t denom);
 	string SiplifyFraction();
 
 private:
 	unique_ptr <PrimeFactor> PF;
-	vector <uint64_t> numerator, denominator;
-	uint64_t numeratorI, denominatorI;
+	vector <uint_fast64_t> numerator, denominator;
+	uint_fast64_t numeratorI;
+	uint_fast64_t denominatorI;
 	
 	void STRto2INT(string input);
 	void CnFrac();

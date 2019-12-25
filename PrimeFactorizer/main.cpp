@@ -5,16 +5,16 @@ using namespace std;
 
 unique_ptr <PrimeFactor> fac;
 
-void prt_func(uint64_t i) {
+void prt_func(uint_fast64_t i) {
 	cout << i << " ";
 }
 
 int main(void) {
 
 
-	vector <uint64_t> Divs;
+	vector <uint_fast64_t> Divs;
 
-	uint64_t num;
+	uint_fast64_t num;
 	int mode;
 	string more;
 
@@ -28,7 +28,7 @@ int main(void) {
 
 		Divs = fac->factor(num);
 		cout << "the factors of " << num << " are:\n";
-		for (uint64_t i : Divs) {
+		for (uint_fast64_t i : Divs) {
 			cout << i << " ";
 		}
 		cout << "\n\n\n";
