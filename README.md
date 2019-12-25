@@ -16,4 +16,4 @@ L  => the first 10000000
 
 
 roadmap:
-fraction minimizer-> root minizer -> t.b.d.-> ui
+fraction minimizer-> root minimizer -> t.b.d.-> ui
