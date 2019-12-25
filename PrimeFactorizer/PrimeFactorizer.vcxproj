@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Fraction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrimeCheck.cpp" />
     <ClCompile Include="PrimeDivisor.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="PrimeOps.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Fraction.h" />
     <ClInclude Include="PrimeCheck.h" />
     <ClInclude Include="PrimeDivisor.h" />
     <ClInclude Include="PrimeFactor.h" />
