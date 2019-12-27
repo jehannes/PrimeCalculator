@@ -15,7 +15,7 @@ void Fraction::setFraction(uint_fast64_t numer, uint_fast64_t denom)
 	denominatorI = denom;
 }
 
-string Fraction::SiplifyFraction()//returns a new string for in the form numerator/denominator ready for printing
+string Fraction::SimplifyFraction()//returns a new string for in the form numerator/denominator ready for printing
 {
 	CnFrac();
 	string g_string;
@@ -27,50 +27,41 @@ string Fraction::SiplifyFraction()//returns a new string for in the form numerat
 
 void Fraction::STRto2INT(string input)
 {
-	//somehow do this:
-	//string:	 	   numerator/denominator
-	//				    /				  \
-	//uint_fast64_t: numeratorI	   ,	  denominatorI
+	string temp1 = input;
 	string temp = "";
 
 	for (int i = 0;; i++) {
-		if (input.at(i) == (char)*"/") {
-			for (int j = 0; j <= i; j++) {
-				input.erase(j);
-			}
-			break;
+		if (temp1.at(i) == (char)*"/") {
+				temp1.erase(temp1.begin(), temp1.begin() + i + 1);
+				break;
 		}
-
-		temp.append((const char*)&input.at(i));//does this work?
+		else {
+			temp += temp1[i];//does this work?
+		}
 
 	}
 
 	numeratorI = stoi(temp);
-	denominatorI = stoi(input);
+	denominatorI = stoi(temp1);
 
 }
 
 void Fraction::CnFrac()//calculates the new fraction by way of prime factorization
 {
-	uint_fast64_t t_numerI = 0, t_denomI = 0;
-
+	uint_fast64_t t_numerI = 1, t_denomI = 1;
+	vector <uint_fast64_t> t_numerV, t_denomV;
 	numerator = PF->factor(numeratorI);
 	denominator = PF->factor(denominatorI);
 
-	for (vector <uint_fast64_t>::iterator it_1 = numerator.begin(); it_1 != numerator.end(); it_1++) {
-		for (vector <uint_fast64_t>::iterator it_2 = denominator.begin(); it_2 != denominator.end(); it_2++) {
-			if (*it_1 == *it_2) {
-				numerator.erase(it_1);
-				denominator.erase(it_2);
-			}
-		}
-	}
+	
+	set_difference(numerator.begin(),numerator.end(),denominator.begin(),denominator.end(),inserter(t_numerV,t_numerV.begin()));//crashes on access violation in return vector
+	set_difference(denominator.begin(), denominator.end(), numerator.begin(), numerator.end(), inserter(t_denomV, t_denomV.begin()));
+	
 
-
-	for (uint_fast64_t i : numerator)
+	for (uint_fast64_t i : t_numerV)
 		t_numerI *= i;
 
-	for (uint_fast64_t i : denominator)
+	for (uint_fast64_t i : t_denomV)
 		t_denomI *= i;
 
 	numeratorI = t_numerI;

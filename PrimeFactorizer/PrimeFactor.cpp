@@ -46,6 +46,8 @@ PrimeFactor::PrimeFactor(int mode) : fl(false)//choose library
 
 vector<uint_fast64_t> PrimeFactor::factor(uint_fast64_t num)//factorize number
 {
+
+	Divisors.~vector();
 	while (num > 1) {
 		if (fl == false) {
 			if (num > ULLONG_MAX) {

@@ -10,7 +10,7 @@ public:
 	Fraction(int Mo);
 	void setFraction(string input);
 	void setFraction(uint_fast64_t numer, uint_fast64_t denom);
-	string SiplifyFraction();
+	string SimplifyFraction();
 
 private:
 	unique_ptr <PrimeFactor> PF;

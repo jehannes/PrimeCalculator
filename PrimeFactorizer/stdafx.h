@@ -16,3 +16,4 @@
 #include <strsafe.h>
 #include <io.h>
 #include <fcntl.h>
+#include <iterator>

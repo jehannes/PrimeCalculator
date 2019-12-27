@@ -25,7 +25,7 @@ bool PrimeCheck::is_prime(uint_fast64_t input) {
 		return true;
 	}
 	else {
-		for (uint_fast64_t i = 2; i < sqrt(input); ++i) {
+		for (uint_fast64_t i = 2; i <= sqrt(input); ++i) {
 			if (input % i == 0) {
 				return false;
 			}
