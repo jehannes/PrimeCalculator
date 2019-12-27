@@ -1,6 +1,6 @@
 #include "PrimeOps.h"
 
-PrimeOps::PrimeOps() :CurPrime(0), runtype(false)//constructor without library loading 
+PrimeOps::PrimeOps()  :CurPrime(0), runtype(false)//constructor without library loading 
 {
 }
 

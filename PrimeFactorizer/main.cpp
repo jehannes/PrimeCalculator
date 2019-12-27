@@ -7,7 +7,6 @@ using namespace std;
 //unique_ptr <PrimeFactor> fac;
 unique_ptr <Fraction> Frac;
 
-
 void prt_func(uint_fast64_t i) {
 	cout << i << " ";
 }
@@ -19,7 +18,7 @@ int main(void) {
 
 	//uint_fast64_t num;
 	string num;
-	int mode;
+	int mode = 0;
 	string more;
 
 
@@ -29,7 +28,7 @@ int main(void) {
 		cout << "\ngive mode:";
 		cin >> mode;
 
-		Frac = unique_ptr <Fraction>(new Fraction(mode));
+		Frac = unique_ptr <Fraction>(make_unique <Fraction>(mode));
 
 /*		fac = unique_ptr <PrimeFactor>(new PrimeFactor(mode));
 

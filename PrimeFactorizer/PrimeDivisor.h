@@ -9,7 +9,7 @@ class PrimeDivisor :
 	public PrimeOps
 {
 public:
-	PrimeDivisor();
+	PrimeDivisor() ;
 	PrimeDivisor(string b);
 	uint_fast64_t N_Div(uint_fast64_t input);
 

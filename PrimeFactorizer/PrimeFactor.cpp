@@ -1,6 +1,6 @@
 #include "PrimeFactor.h"
 
-PrimeFactor::PrimeFactor() : Check(new PrimeCheck()), Div(new PrimeDivisor), fl(false)
+PrimeFactor::PrimeFactor()  : Check(make_unique <PrimeCheck>()), Div(make_unique <PrimeDivisor>()), fl(false)
 {
 }
 
@@ -35,12 +35,12 @@ PrimeFactor::PrimeFactor(int mode) : fl(false)//choose library
 	}
 
 	if (fname == check) {
-		Check = unique_ptr <PrimeCheck>(new PrimeCheck());
-		Div = unique_ptr <PrimeDivisor>(new PrimeDivisor());
+		Check = unique_ptr <PrimeCheck>(make_unique <PrimeCheck>());
+		Div = unique_ptr <PrimeDivisor>(make_unique <PrimeDivisor>());
 	}
 	else {
-		Check = unique_ptr <PrimeCheck>(new PrimeCheck(fname));
-		Div = unique_ptr <PrimeDivisor>(new PrimeDivisor(fname));
+		Check = unique_ptr <PrimeCheck>(make_unique <PrimeCheck>(fname));
+		Div = unique_ptr <PrimeDivisor>(make_unique <PrimeDivisor>(fname));
 	}
 }
 
@@ -48,6 +48,7 @@ vector<uint_fast64_t> PrimeFactor::factor(uint_fast64_t num)//factorize number
 {
 
 	Divisors.~vector();
+	fl = false;
 	while (num > 1) {
 		if (fl == false) {
 			if (num > ULLONG_MAX) {
@@ -70,7 +71,8 @@ vector<uint_fast64_t> PrimeFactor::factor(uint_fast64_t num)//factorize number
 		}
 		fl = true;
 	}
-	fl = false;
+
 	return Divisors;
+
 }
 

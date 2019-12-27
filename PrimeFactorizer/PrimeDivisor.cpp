@@ -1,10 +1,10 @@
 #include "PrimeDivisor.h"
 
-PrimeDivisor::PrimeDivisor() :PrimeOps(), Checker(new PrimeCheck())
+PrimeDivisor::PrimeDivisor()  :PrimeOps(), Checker(make_unique <PrimeCheck>())
 {
 }
 
-PrimeDivisor::PrimeDivisor(string b) : PrimeOps(b), Checker(new PrimeCheck())
+PrimeDivisor::PrimeDivisor(string b) : PrimeOps(b), Checker(make_unique <PrimeCheck>(b))
 {
 }
 

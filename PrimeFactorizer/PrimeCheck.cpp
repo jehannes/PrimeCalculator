@@ -1,6 +1,6 @@
 #include "PrimeCheck.h"
 
-PrimeCheck::PrimeCheck() :PrimeOps() {}
+PrimeCheck::PrimeCheck()  :PrimeOps() {}
 
 PrimeCheck::PrimeCheck(string b) : PrimeOps(b)
 {
@@ -12,7 +12,7 @@ bool PrimeCheck::is_prime(uint_fast64_t input) {
 		return true;
 	}
 	if (PrimeOps::runtype) {
-		for (uint_fast64_t i : PrimeOps::pvec) {
+		for (const uint_fast64_t i : PrimeOps::pvec) {
 			if (i == input) {
 				return true;
 			}

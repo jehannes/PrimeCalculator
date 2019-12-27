@@ -8,7 +8,7 @@ class PrimeCheck :
 	public PrimeOps
 {
 public:
-	PrimeCheck();
+	PrimeCheck() ;
 	PrimeCheck(string b);
 	bool is_prime(uint_fast64_t input);
 

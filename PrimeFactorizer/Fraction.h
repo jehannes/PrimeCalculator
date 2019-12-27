@@ -9,7 +9,7 @@ class Fraction
 public:
 	Fraction(int Mo);
 	void setFraction(string input);
-	void setFraction(uint_fast64_t numer, uint_fast64_t denom);
+	void setFraction(uint_fast64_t numer, uint_fast64_t denom) ;
 	string SimplifyFraction();
 
 private:
@@ -17,8 +17,6 @@ private:
 	vector <uint_fast64_t> numerator, denominator;
 	uint_fast64_t numeratorI;
 	uint_fast64_t denominatorI;
-
-	void STRto2INT(string input);
 	void CnFrac();
 };
 
