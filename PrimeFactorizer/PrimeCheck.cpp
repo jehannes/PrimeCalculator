@@ -10,19 +10,9 @@ PrimeCheck::PrimeCheck(string b) : PrimeOps(b)
 bool PrimeCheck::is_prime(uint_fast64_t input) {
 	if (input == 2) {
 		return true;
-	}
-	if (PrimeOps::runtype) {
-		for (const uint_fast64_t i : PrimeOps::pvec) {
-			if (i == input) {
-				return true;
-			}
-		}
-		for (uint_fast64_t j = 2; (uint_fast64_t)(j < sqrt(input) + 1); j++) {
-			if (input % j == 0) {
-				return false;
-			}
-		}
-		return true;
+	}else
+	if (PrimeOps::runtype && PrimeOps::pvec.back() >= input) {
+		return binary_search(PrimeOps::pvec.begin(), PrimeOps::pvec.end(), input);
 	}
 	else {
 		for (uint_fast64_t i = 2; i <= sqrt(input); ++i) {
@@ -32,5 +22,4 @@ bool PrimeCheck::is_prime(uint_fast64_t input) {
 		}
 		return true;
 	}
-
 }

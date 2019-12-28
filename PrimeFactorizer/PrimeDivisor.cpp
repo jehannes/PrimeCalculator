@@ -12,6 +12,7 @@ uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 	if (Checker->is_prime(input)) {
 		return input;
 	}
+
 	if (PrimeOps::runtype) {//determines if there is a library or not
 
 		for (int i = 0; i < PrimeOps::pvec.size(); ++i) {

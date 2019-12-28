@@ -12,7 +12,7 @@ PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with libr
 	fs.open(b.c_str(), fstream::in);
 
 	system("CLS");
-	cout << "loading primes library..." << endl;
+	cout << "loading primes library...\n";
 
 
 	if (fs.is_open())
@@ -26,7 +26,13 @@ PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with libr
 			}
 		}
 
-	cout << "done loading" << endl;
+	if (pvec.size() != NULL) {
+		cout << "done loading\n";
+	}
+	else {
+		runtype = false;
+		cout << "error while loading, continueing in mode 0\n";
+	}
 	Sleep(300);
 	system("CLS");
 	fs.close();

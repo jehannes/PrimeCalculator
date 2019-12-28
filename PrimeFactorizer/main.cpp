@@ -34,8 +34,10 @@ int main(void) {
 				cout << "the factors of " << num << " are:\n";
 				for (uint_fast64_t i : Divs) {
 					cout << i << " ";
-				}*/
-				//Frac->setFraction(num);
+				}
+				Frac->setFraction(num);
+				*/
+
 		Frac->setFraction(num);
 		system("CLS");
 		cout << Frac->SimplifyFraction();

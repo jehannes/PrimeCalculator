@@ -33,10 +33,16 @@ void Fraction::setFraction(uint_fast64_t numer, uint_fast64_t denom)
 string Fraction::SimplifyFraction()//returns a new string for in the form numerator/denominator ready for printing
 {
 	CnFrac();
+
 	string g_string;
+
 	g_string.append(to_string(numeratorI));
-	g_string.append("/");
-	g_string.append(to_string(denominatorI));
+
+	if (denominatorI != 1) {
+		g_string.append("/");
+		g_string.append(to_string(denominatorI));
+	}
+
 	return g_string;
 }
 
@@ -48,6 +54,8 @@ void Fraction::CnFrac()//calculates the new fraction by way of prime factorizati
 	numerator = PF->factor(numeratorI);
 	denominator = PF->factor(denominatorI);
 
+	sort(numerator.begin(), numerator.end());
+	sort(denominator.begin(), denominator.end());
 
 	set_difference(numerator.begin(), numerator.end(), denominator.begin(), denominator.end(), inserter(t_numerV, t_numerV.begin()));
 	set_difference(denominator.begin(), denominator.end(), numerator.begin(), numerator.end(), inserter(t_denomV, t_denomV.begin()));
