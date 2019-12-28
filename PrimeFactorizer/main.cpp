@@ -7,16 +7,14 @@ using namespace std;
 //unique_ptr <PrimeFactor> fac;
 unique_ptr <Fraction> Frac;
 
-void prt_func(uint_fast64_t i) {
-	cout << i << " ";
-}
+
 
 int main(void) {
 
 
-//	vector <uint_fast64_t> Divs;
+	//	vector <uint_fast64_t> Divs;
 
-	//uint_fast64_t num;
+		//uint_fast64_t num;
 	string num;
 	int mode = 0;
 	string more;
@@ -30,25 +28,24 @@ int main(void) {
 
 		Frac = unique_ptr <Fraction>(make_unique <Fraction>(mode));
 
-/*		fac = unique_ptr <PrimeFactor>(new PrimeFactor(mode));
+		/*		fac = unique_ptr <PrimeFactor>(new PrimeFactor(mode));
 
-		Divs = fac->factor(num);
-		cout << "the factors of " << num << " are:\n";
-		for (uint_fast64_t i : Divs) {
-			cout << i << " ";
-		}*/
+				Divs = fac->factor(num);
+				cout << "the factors of " << num << " are:\n";
+				for (uint_fast64_t i : Divs) {
+					cout << i << " ";
+				}*/
+				//Frac->setFraction(num);
 		Frac->setFraction(num);
-
 		system("CLS");
-
 		cout << Frac->SimplifyFraction();
 
 		cout << "\n\n\n";
 
 		cout << "more?  ";
 		cin >> more;
-		if (more.compare("Y") || more.compare("y")) {
-		//	Divs.~vector();
+		if (more == "Y" || more == "y") {
+			//	Divs.~vector();
 			Frac.reset();
 			system("CLS");
 		}
