@@ -15,7 +15,7 @@ uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 
 	if (PrimeOps::runtype && PrimeOps::pvec.back() >= input) {
 
-		for (uint_fast64_t i : PrimeOps::pvec) {
+		for (const uint_fast64_t i : PrimeOps::pvec) {
 			if (input % i == 0) {
 				return i;
 			}

@@ -6,7 +6,7 @@ using namespace std;
 class PrimeOps
 {
 public:
-	PrimeOps() ;
+	PrimeOps() noexcept;
 	PrimeOps(string b);
 
 protected:

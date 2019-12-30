@@ -1,6 +1,6 @@
 #include "PrimeCheck.h"
 
-PrimeCheck::PrimeCheck()  :PrimeOps() {}
+PrimeCheck::PrimeCheck() noexcept :PrimeOps() {}
 
 PrimeCheck::PrimeCheck(string b) : PrimeOps(b)
 {

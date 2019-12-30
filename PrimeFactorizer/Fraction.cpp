@@ -31,7 +31,7 @@ void Fraction::setFraction(string input)
 	}
 }
 
-void Fraction::setFraction(uint_fast64_t numer, uint_fast64_t denom)
+void Fraction::setFraction(uint_fast64_t numer, uint_fast64_t denom) noexcept
 {
 	numeratorI = numer;
 	denominatorI = denom;
@@ -88,7 +88,10 @@ string Fraction::inputSanitizer(string input)
 {
 	regex rgx("(\\d+\\/\\d+)");//apperently c++ uses double escape sequences
 	smatch match;
-	bool mb=regex_search(input,match,rgx, regex_constants::match_any);
+	const bool mb=regex_search(input,match,rgx, regex_constants::match_any);
+	if (!mb) {
+		ExitProcess(0xff);
+	}
 	return match.str(1);
 }
 
