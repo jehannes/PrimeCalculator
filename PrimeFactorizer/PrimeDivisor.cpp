@@ -1,6 +1,6 @@
 #include "PrimeDivisor.h"
 
-PrimeDivisor::PrimeDivisor()  :PrimeOps(), Checker(make_unique <PrimeCheck>())
+PrimeDivisor::PrimeDivisor() :PrimeOps(), Checker(make_unique <PrimeCheck>())
 {
 }
 
@@ -13,28 +13,14 @@ uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 		return input;
 	}
 
-	if (PrimeOps::runtype) {//determines if there is a library or not
+	if (PrimeOps::runtype && PrimeOps::pvec.back() >= input) {
 
-		for (int i = 0; i < PrimeOps::pvec.size(); ++i) {
-			if (input % PrimeOps::pvec.at(i) == 0 && input > PrimeOps::pvec.at(i)) {
-				return PrimeOps::pvec.at(i);
-			}
-			else if (PrimeOps::pvec.at(i) > input) {
-				break;
+		for (uint_fast64_t i : PrimeOps::pvec) {
+			if (input % i == 0) {
+				return i;
 			}
 		}
-
-		uint_fast64_t DivPrime = FnPrime();
-
-		while (DivPrime <= input) {
-			if (input % DivPrime == 0) {
-				PrimeOps::CurPrime = pvec.at(PrimeOps::pvec.size());
-				return DivPrime;
-			}
-			DivPrime = FnPrime();
-		}
-		PrimeOps::CurPrime = 0;
-		return 1;//it really shouldn't get here
+		return 1;
 	}
 	else {
 		uint_fast64_t DivPrime = FnPrime();
@@ -54,11 +40,10 @@ uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 
 uint_fast64_t PrimeDivisor::FnPrime() {
 	uint_fast64_t number = 2;
-	while (true) {
+	for (; number < UINT_FAST64_MAX; number++) {
 		if (Checker->is_prime(number) && number > PrimeOps::CurPrime) {
 			break;
 		}
-		number++;
 	}
 	PrimeOps::CurPrime = number;
 	return number;

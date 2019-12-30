@@ -17,6 +17,8 @@ private:
 	vector <uint_fast64_t> numerator, denominator;
 	uint_fast64_t numeratorI;
 	uint_fast64_t denominatorI;
+
 	void CnFrac();
+	string inputSanitizer(string input);
 };
 

@@ -5,15 +5,8 @@
 #include <string>
 #include <math.h>
 #include <iostream>
-#include <algorithm>  
+#include <algorithm>
 #include <chrono>
 #include <fstream>
-#include <processthreadsapi.h>
-#include <vector>
-#include <numeric>
-#include <winnt.h>
-#include <tchar.h>
-#include <strsafe.h>
-#include <io.h>
-#include <fcntl.h>
 #include <iterator>
+#include <regex>
