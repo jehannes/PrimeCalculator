@@ -48,6 +48,7 @@ vector<uint_fast64_t> PrimeFactor::factor(uint_fast64_t num)//factorize number
 {
 
 	Divisors.~vector();
+
 	fl = false;
 	while (num > 1) {
 		if (fl == false) {

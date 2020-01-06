@@ -90,6 +90,7 @@ string Fraction::inputSanitizer(string input)
 	smatch match;
 	const bool mb=regex_search(input,match,rgx, regex_constants::match_any);
 	if (!mb) {
+		cout << "input error,shutting down";
 		ExitProcess(0xff);
 	}
 	return match.str(1);

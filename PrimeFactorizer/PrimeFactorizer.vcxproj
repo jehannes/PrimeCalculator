@@ -103,7 +103,7 @@
       <ControlFlowGuard>false</ControlFlowGuard>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <AdditionalOptions>/favor:INTEL64 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -150,10 +150,12 @@
       <AssemblerOutput>NoListing</AssemblerOutput>
       <ControlFlowGuard>Guard</ControlFlowGuard>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <EnableModules>false</EnableModules>
+      <EnableModules>true</EnableModules>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <DebugInformationFormat>None</DebugInformationFormat>
       <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -179,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PrimeFactorizer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ToDo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

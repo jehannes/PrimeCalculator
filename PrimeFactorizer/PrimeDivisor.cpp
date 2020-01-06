@@ -38,7 +38,7 @@ uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 	}
 }
 
-uint_fast64_t PrimeDivisor::FnPrime() {
+uint_fast64_t PrimeDivisor::FnPrime() {//todo make dependend on run type, could look through library
 	uint_fast64_t number = 2;
 	for (; number < UINT_FAST64_MAX; number++) {
 		if (Checker->is_prime(number) && number > PrimeOps::CurPrime) {

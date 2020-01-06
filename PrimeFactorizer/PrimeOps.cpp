@@ -26,6 +26,8 @@ PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with libr
 			}
 		}
 
+	sort(pvec.begin(), pvec.end());
+
 	if (pvec.size() != NULL) {
 		cout << "done loading\n";
 	}
