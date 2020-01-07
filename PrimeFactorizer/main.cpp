@@ -28,7 +28,7 @@ int main(void) {
 		cin >> mode;
 
 		Lib = shared_ptr <PrimeLibrary>(make_shared<PrimeLibrary>(mode));
-		Frac = unique_ptr <Fraction>(make_unique <Fraction>(mode));
+		Frac = unique_ptr <Fraction>(make_unique <Fraction>(Lib));
 
 		/*		fac = unique_ptr <PrimeFactor>(new PrimeFactor(mode));
 

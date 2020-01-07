@@ -2,7 +2,7 @@
 1.	Make a single library loader object to be created and passed on to other objects (shared pointer)
 	Contains at least a mode and a data vector (both public)
 	mode indicates if a library is being used
-	this is to reduce load times and memory usage
+	this is to reduce load times and memory usage /*done*/
 
 2.	rewrite all other objects to use the new library object and it's mode
 

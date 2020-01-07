@@ -10,7 +10,7 @@ class PrimeDivisor :
 {
 public:
 	PrimeDivisor() ;
-	PrimeDivisor(string b);
+	PrimeDivisor(shared_ptr <PrimeLibrary> l);
 	uint_fast64_t N_Div(uint_fast64_t input);
 
 private:

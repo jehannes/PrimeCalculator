@@ -2,7 +2,7 @@
 
 PrimeCheck::PrimeCheck() noexcept :PrimeOps() {}
 
-PrimeCheck::PrimeCheck(string b) : PrimeOps(b)
+PrimeCheck::PrimeCheck(shared_ptr <PrimeLibrary> l) : PrimeOps(l)
 {
 }
 

@@ -7,7 +7,7 @@
 class Fraction
 {
 public:
-	Fraction(int Mo);
+	Fraction(shared_ptr <PrimeLibrary> l);
 	void setFraction(string input);
 	void setFraction(uint_fast64_t numer, uint_fast64_t denom) noexcept;
 	string SimplifyFraction();

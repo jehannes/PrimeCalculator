@@ -9,7 +9,7 @@ class PrimeCheck :
 {
 public:
 	PrimeCheck() noexcept; 
-	PrimeCheck(string b);
+	PrimeCheck(shared_ptr <PrimeLibrary> l);
 	bool is_prime(uint_fast64_t input);
 
 };

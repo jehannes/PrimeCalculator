@@ -8,40 +8,8 @@ PrimeFactor::~PrimeFactor()
 {
 }
 
-PrimeFactor::PrimeFactor(int mode) : fl(false)//choose library
+PrimeFactor::PrimeFactor(shared_ptr <PrimeLibrary> l) : fl(false), Check(make_unique <PrimeCheck>(l)), Div(make_unique <PrimeDivisor>(l))
 {
-	string fname = "Primes";
-	string check = "Primes";
-
-	switch (mode) {
-	case 0:
-		break;
-
-	case 1:
-		fname.append("[XS].txt");
-		break;
-
-	case 2:
-		fname.append("[S].txt");
-		break;
-
-	case 3:
-		fname.append("[M].txt");
-		break;
-
-	case 4:
-		fname.append("[L].txt");
-		break;
-	}
-
-	if (fname == check) {
-		Check = unique_ptr <PrimeCheck>(make_unique <PrimeCheck>());
-		Div = unique_ptr <PrimeDivisor>(make_unique <PrimeDivisor>());
-	}
-	else {
-		Check = unique_ptr <PrimeCheck>(make_unique <PrimeCheck>(fname));
-		Div = unique_ptr <PrimeDivisor>(make_unique <PrimeDivisor>(fname));
-	}
 }
 
 vector<uint_fast64_t> PrimeFactor::factor(uint_fast64_t num)//factorize number

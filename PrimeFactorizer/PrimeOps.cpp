@@ -1,41 +1,10 @@
 #include "PrimeOps.h"
 
-PrimeOps::PrimeOps() noexcept :CurPrime(0), runtype(false)//constructor without library loading 
+PrimeOps::PrimeOps() : CurPrime(0), runtype(false)
 {
 }
 
-PrimeOps::PrimeOps(string b) : CurPrime(0), runtype(true)//constructor with library loading 
+PrimeOps::PrimeOps(shared_ptr <PrimeLibrary> l) : CurPrime(0), runtype(l->RunType),pvec(l->PrimeVect)//constructor without library loading 
 {
-	fstream fs;
-	string str;
-
-	fs.open(b.c_str(), fstream::in);
-
-	system("CLS");
-	cout << "loading primes library...\n";
-
-
-	if (fs.is_open())
-
-		while (fs >> str) {
-			if (str == "") {
-				break;
-			}
-			else {
-				pvec.push_back((uint_fast64_t)stoi(str));
-			}
-		}
-
-	sort(pvec.begin(), pvec.end());
-
-	if (pvec.size() != NULL) {
-		cout << "done loading\n";
-	}
-	else {
-		runtype = false;
-		cout << "error while loading, continueing in mode 0\n";
-	}
-	Sleep(300);
-	system("CLS");
-	fs.close();
 }
+

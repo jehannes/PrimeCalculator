@@ -1,7 +1,7 @@
 #include "Fraction.h"
 #include "pch.h"
 
-Fraction::Fraction(int Mo) :PF(make_unique <PrimeFactor>(Mo)), numeratorI(0), denominatorI(0)
+Fraction::Fraction(shared_ptr <PrimeLibrary> l) :PF(make_unique <PrimeFactor>(l)), numeratorI(0), denominatorI(0)
 {
 }
 

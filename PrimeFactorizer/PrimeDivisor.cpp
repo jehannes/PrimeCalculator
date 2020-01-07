@@ -4,7 +4,7 @@ PrimeDivisor::PrimeDivisor() :PrimeOps(), Checker(make_unique <PrimeCheck>())
 {
 }
 
-PrimeDivisor::PrimeDivisor(string b) : PrimeOps(b), Checker(make_unique <PrimeCheck>(b))
+PrimeDivisor::PrimeDivisor(shared_ptr <PrimeLibrary> l) : PrimeOps(l), Checker(make_unique <PrimeCheck>(l))
 {
 }
 
