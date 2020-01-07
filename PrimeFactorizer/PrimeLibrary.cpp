@@ -2,11 +2,14 @@
 
 PrimeLibrary::PrimeLibrary() : RunType(false)
 {
+	PrimeVect.~vector();
 }
 
 PrimeLibrary::PrimeLibrary(uint16_t mode) : RunType(false)
 {
 	string fname = "Primes";
+
+	PrimeVect.~vector();
 
 	switch (mode) {
 	case 0:

@@ -18,7 +18,6 @@ private:
 	unique_ptr <PrimeCheck> Check;
 	unique_ptr <PrimeDivisor> Div;
 	vector <uint_fast64_t> Divisors;
-	bool fl;
 
 };
 

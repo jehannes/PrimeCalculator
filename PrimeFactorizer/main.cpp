@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "PrimeFactor.h"
 #include "Fraction.h"
-#include "PrimeLibrary.h"
 
 using namespace std;
 
@@ -50,6 +49,7 @@ int main(void) {
 		cin >> more;
 		if (more == "Y" || more == "y") {
 			//	Divs.~vector();
+			Lib.reset();
 			Frac.reset();
 			system("CLS");
 		}

@@ -171,7 +171,6 @@
     <ClCompile Include="PrimeDivisor.cpp" />
     <ClCompile Include="PrimeFactor.cpp" />
     <ClCompile Include="PrimeLibrary.cpp" />
-    <ClCompile Include="PrimeOps.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fraction.h" />
@@ -179,7 +178,6 @@
     <ClInclude Include="PrimeDivisor.h" />
     <ClInclude Include="PrimeFactor.h" />
     <ClInclude Include="PrimeLibrary.h" />
-    <ClInclude Include="PrimeOps.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
