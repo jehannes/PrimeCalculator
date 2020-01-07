@@ -1,6 +1,6 @@
 #pragma once
 #include "pch.h"
-#include "PrimeOps.h"
+
 #include "PrimeCheck.h"
 
 using namespace std;
