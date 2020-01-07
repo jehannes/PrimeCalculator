@@ -4,7 +4,9 @@
 	mode indicates if a library is being used
 	this is to reduce load times and memory usage /*done*/
 
-2.	rewrite all other objects to use the new library object and it's mode
+2.	rewrite all other objects to use the new library object and it's mode /*done*/
+
+3.	make root factorization funtionallity (form: [exp]root([number])), where if exp is not existant it is 2
 
 n.	make ui:
 	*only for windows (allows full .NET4)
