@@ -1,6 +1,6 @@
 #pragma once
 #include "PrimeOps.h"
-#include "stdafx.h"
+#include "pch.h"
 
 using namespace std;
 

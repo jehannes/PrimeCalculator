@@ -1,9 +1,10 @@
+
 1.	Make a single library loader object to be created and passed on to other objects (shared pointer)
 	Contains at least a mode and a data vector (both public)
 	mode indicates if a library is being used
 	this is to reduce load times and memory usage
 
-2.	rewrite all other object to use the new library object and it's mode
+2.	rewrite all other objects to use the new library object and it's mode
 
 n.	make ui:
 	*only for windows (allows full .NET4)
@@ -11,6 +12,7 @@ n.	make ui:
 			C#
 			XAML
 			JS
+			C++
 	*different screens per calculation type
 	*after a calculation gives shows 3 options in the same window as the results:
 		-save the result in a file
@@ -23,6 +25,6 @@ n.	make ui:
 n+1.polish ui:
 	*add dark mode/theme option
 	*add calculation time in lower bar
-	*button sounds?...maybe? (can be really annoying though, include option to not use)
+	*button sounds?...maybe? (can be really annoying though, include option to mute)
 	*polish code
 	*maybe also optimize backend?

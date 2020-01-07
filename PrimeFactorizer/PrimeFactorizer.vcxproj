@@ -156,6 +156,7 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,6 +170,7 @@
     <ClCompile Include="PrimeCheck.cpp" />
     <ClCompile Include="PrimeDivisor.cpp" />
     <ClCompile Include="PrimeFactor.cpp" />
+    <ClCompile Include="PrimeLibrary.cpp" />
     <ClCompile Include="PrimeOps.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -176,8 +178,9 @@
     <ClInclude Include="PrimeCheck.h" />
     <ClInclude Include="PrimeDivisor.h" />
     <ClInclude Include="PrimeFactor.h" />
+    <ClInclude Include="PrimeLibrary.h" />
     <ClInclude Include="PrimeOps.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PrimeFactorizer.rc" />

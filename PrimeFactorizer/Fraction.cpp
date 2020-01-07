@@ -1,4 +1,5 @@
 #include "Fraction.h"
+#include "pch.h"
 
 Fraction::Fraction(int Mo) :PF(make_unique <PrimeFactor>(Mo)), numeratorI(0), denominatorI(0)
 {

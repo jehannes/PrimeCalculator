@@ -1,12 +1,13 @@
-#include "stdafx.h"
+#include "pch.h"
 #include "PrimeFactor.h"
 #include "Fraction.h"
+#include "PrimeLibrary.h"
 
 using namespace std;
 
 //unique_ptr <PrimeFactor> fac;
 unique_ptr <Fraction> Frac;
-
+shared_ptr <PrimeLibrary> Lib;
 
 
 int main(void) {
@@ -26,6 +27,7 @@ int main(void) {
 		cout << "\ngive mode:";
 		cin >> mode;
 
+		Lib = shared_ptr <PrimeLibrary>(make_shared<PrimeLibrary>(mode));
 		Frac = unique_ptr <Fraction>(make_unique <Fraction>(mode));
 
 		/*		fac = unique_ptr <PrimeFactor>(new PrimeFactor(mode));
