@@ -9,7 +9,7 @@ void Fraction::setFraction(string input)
 {
 	string temp = "";
 	input = inputSanitizer(input);
-	const uint64_t i_s = input.size();
+	const unsigned long long i_s = input.size();
 
 	for (int i = 0; i < input.size(); i++) {
 		if (input.at(i) == '/') {
@@ -22,17 +22,32 @@ void Fraction::setFraction(string input)
 
 	}
 
-	numeratorI = stoi(temp);
+	try {
+		numeratorI = stoull(temp);
 
-	if (i_s != input.size()) {
-		denominatorI = stoi(input);
+		if (i_s != input.size()) {
+			denominatorI = stoull(input);
+		}
+		else {
+			denominatorI = 1;
+		}
 	}
-	else {
-		denominatorI = 1;
+	catch(const out_of_range & oor){
+		system("CLS");
+		cerr << "Out of Range error: " << oor.what() << '\n';
+		cout << "number given entered exceeds " << ULLONG_MAX;
+		Sleep(4000);
+		system("CLS");
+
+		cout << "enter new fraction: ";
+		string nfrac;
+		cin >> nfrac;
+		setFraction(nfrac);
+
 	}
 }
 
-void Fraction::setFraction(uint_fast64_t numer, uint_fast64_t denom) noexcept
+void Fraction::setFraction(unsigned long long numer, unsigned long long denom) noexcept
 {
 	numeratorI = numer;
 	denominatorI = denom;
@@ -56,8 +71,8 @@ string Fraction::SimplifyFraction()//returns a new string for in the form numera
 
 void Fraction::CnFrac()//calculates the new fraction by way of prime factorization
 {
-	uint_fast64_t t_numerI = 1, t_denomI = 1;
-	vector <uint_fast64_t> t_numerV, t_denomV;
+	unsigned long long t_numerI = 1, t_denomI = 1;
+	vector <unsigned long long> t_numerV, t_denomV;
 
 	//get the sets of primes that make up the numbers
 	numerator = PF->factor(numeratorI);
@@ -74,10 +89,10 @@ void Fraction::CnFrac()//calculates the new fraction by way of prime factorizati
 	set_difference(denominator.begin(), denominator.end(), numerator.begin(), numerator.end(), inserter(t_denomV, t_denomV.begin()));
 
 	//multiply the sets to get the resulting number
-	for (const uint_fast64_t i : t_numerV)
+	for (const unsigned long long i : t_numerV)
 		t_numerI *= i;
 
-	for (const uint_fast64_t i : t_denomV)
+	for (const unsigned long long i : t_denomV)
 		t_denomI *= i;
 
 	//set the object values

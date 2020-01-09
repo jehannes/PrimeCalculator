@@ -9,13 +9,13 @@ class Fraction
 public:
 	Fraction(shared_ptr <PrimeLibrary> l);
 	void setFraction(string input);
-	void setFraction(uint_fast64_t numer, uint_fast64_t denom) noexcept;
+	void setFraction(unsigned long long numer, unsigned long long denom) noexcept;
 	string SimplifyFraction();
 
 private:
 	unique_ptr <PrimeFactor> PF;
-	vector <uint_fast64_t> numerator, denominator;
-	uint_fast64_t numeratorI,denominatorI;
+	vector <unsigned long long> numerator, denominator;
+	unsigned long long numeratorI,denominatorI;
 
 	void CnFrac();
 	string inputSanitizer(string input);

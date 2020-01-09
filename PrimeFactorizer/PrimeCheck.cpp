@@ -7,7 +7,7 @@ PrimeCheck::PrimeCheck(shared_ptr <PrimeLibrary> l) : Lib(l)
 }
 
 
-bool PrimeCheck::is_prime(uint_fast64_t input) {
+bool PrimeCheck::is_prime(unsigned long long input) {
 	if (input == 2) {
 		return true;
 	}else
@@ -15,7 +15,7 @@ bool PrimeCheck::is_prime(uint_fast64_t input) {
 		return binary_search(Lib->PrimeVect.begin(), Lib->PrimeVect.end(), input);
 	}
 	else {
-		for (uint_fast64_t i = 2; i <= sqrt(input); ++i) {
+		for (unsigned long long i = 2; i <= sqrt(input); ++i) {
 			if (input % i == 0) {
 				return false;
 			}

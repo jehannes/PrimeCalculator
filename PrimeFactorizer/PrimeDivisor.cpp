@@ -8,14 +8,14 @@ PrimeDivisor::PrimeDivisor(shared_ptr <PrimeLibrary> l) : Lib(l), Checker(make_u
 {
 }
 
-uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
+unsigned long long PrimeDivisor::N_Div(unsigned long long input) {
 	if (Checker->is_prime(input)) {
 		return input;
 	}
 
 	if (Lib->RunType && Lib->PrimeVect.back() >= input) {
 
-		for (const uint_fast64_t i : Lib->PrimeVect) {
+		for (const unsigned long long i : Lib->PrimeVect) {
 			if (input % i == 0) {
 				return i;
 			}
@@ -23,7 +23,7 @@ uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 		return 1;
 	}
 	else {
-		uint_fast64_t DivPrime = FnPrime();
+		unsigned long long DivPrime = FnPrime();
 
 
 		while (DivPrime <= input) {
@@ -38,8 +38,8 @@ uint_fast64_t PrimeDivisor::N_Div(uint_fast64_t input) {
 	}
 }
 
-uint_fast64_t PrimeDivisor::FnPrime() {//todo make dependend on run type, could look through library
-	uint_fast64_t number = 2;
+unsigned long long PrimeDivisor::FnPrime() {//todo make dependend on run type, could look through library
+	unsigned long long number = 2;
 	for (; number < UINT_FAST64_MAX; number++) {
 		if (Checker->is_prime(number) && number > CurPrime) {
 			break;

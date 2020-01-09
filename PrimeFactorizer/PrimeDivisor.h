@@ -10,12 +10,12 @@ class PrimeDivisor
 public:
 	PrimeDivisor();
 	PrimeDivisor(shared_ptr <PrimeLibrary> l);
-	uint_fast64_t N_Div(uint_fast64_t input);
+	unsigned long long N_Div(unsigned long long input);
 
 private:
-	uint_fast64_t FnPrime();
+	unsigned long long FnPrime();
 	unique_ptr <PrimeCheck> Checker;
-	uint_fast64_t CurPrime;
+	unsigned long long CurPrime;
 
 	shared_ptr <PrimeLibrary> Lib;
 };
