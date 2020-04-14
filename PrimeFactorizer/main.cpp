@@ -12,9 +12,9 @@ shared_ptr <PrimeLibrary> Lib;
 int main(void) {
 
 
-	//	vector <double> Divs;
+	//	vector <uint64_t> Divs;
 
-		//double num;
+		//uint64_t num;
 	string num;
 	int mode = 0;
 	string more;
@@ -33,7 +33,7 @@ int main(void) {
 
 				Divs = fac->factor(num);
 				cout << "the factors of " << num << " are:\n";
-				for (double i : Divs) {
+				for (uint64_t i : Divs) {
 					cout << i << " ";
 				}
 				Frac->setFraction(num);

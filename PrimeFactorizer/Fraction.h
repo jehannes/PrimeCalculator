@@ -9,16 +9,19 @@ class Fraction
 public:
 	Fraction(shared_ptr <PrimeLibrary> l);
 	void setFraction(string input);
-	void setFraction(double numer, double denom) noexcept;
+	void setFraction(uint64_t numer, uint64_t denom) noexcept;
+	uint64_t getNumerator();
+	uint64_t getDenominator();
+	string getFractionString();
 	string SimplifyFraction();
 
 private:
 	shared_ptr <PrimeFactor> PF;
-	vector <double> AsyncFactor(double);
-	vector <double> numerator, denominator;
-	double numeratorI,denominatorI;
-
-	void CnFrac();
+	vector <uint64_t> AsyncFactor(uint64_t);
+	vector <uint64_t> numerator, denominator;
+	uint64_t numeratorI,denominatorI;
+	bool calcstate;
+	void CalcNewFraction();
 	string inputSanitizer(string input);
 
 };

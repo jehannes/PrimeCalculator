@@ -10,7 +10,7 @@ public:
 	PrimeLibrary();
 	PrimeLibrary(uint16_t mode);
 
-	vector <double> PrimeVect;
+	vector <uint64_t> PrimeVect;
 	bool RunType;
 
 private:
