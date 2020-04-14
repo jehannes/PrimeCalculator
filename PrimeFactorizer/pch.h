@@ -13,5 +13,7 @@
 #include <fstream>
 #include <iterator>
 #include <regex>
+#include <iomanip>
+#include <future>
 
 #include "PrimeLibrary.h"

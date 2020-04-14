@@ -9,15 +9,17 @@ class Fraction
 public:
 	Fraction(shared_ptr <PrimeLibrary> l);
 	void setFraction(string input);
-	void setFraction(unsigned long long numer, unsigned long long denom) noexcept;
+	void setFraction(double numer, double denom) noexcept;
 	string SimplifyFraction();
 
 private:
-	unique_ptr <PrimeFactor> PF;
-	vector <unsigned long long> numerator, denominator;
-	unsigned long long numeratorI,denominatorI;
+	shared_ptr <PrimeFactor> PF;
+	vector <double> AsyncFactor(double);
+	vector <double> numerator, denominator;
+	double numeratorI,denominatorI;
 
 	void CnFrac();
 	string inputSanitizer(string input);
+
 };
 

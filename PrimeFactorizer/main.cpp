@@ -12,9 +12,9 @@ shared_ptr <PrimeLibrary> Lib;
 int main(void) {
 
 
-	//	vector <unsigned long long> Divs;
+	//	vector <double> Divs;
 
-		//unsigned long long num;
+		//double num;
 	string num;
 	int mode = 0;
 	string more;
@@ -33,7 +33,7 @@ int main(void) {
 
 				Divs = fac->factor(num);
 				cout << "the factors of " << num << " are:\n";
-				for (unsigned long long i : Divs) {
+				for (double i : Divs) {
 					cout << i << " ";
 				}
 				Frac->setFraction(num);
@@ -48,7 +48,6 @@ int main(void) {
 		cout << "more?  ";
 		cin >> more;
 		if (more == "Y" || more == "y") {
-			//	Divs.~vector();
 			Lib.reset();
 			Frac.reset();
 			system("CLS");

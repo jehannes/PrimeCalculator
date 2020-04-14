@@ -9,13 +9,13 @@
 3.	make root factorization funtionallity (form: [exp]root([number])), where if exp is not existant it is 2
 
 n.	make ui:
-	*only for windows (allows full .NET4)
+	*only for windows (c# allows full .NET4)
 		-language options include:
 			C#
 			XAML
 			JS
-			C++
-	*different screens per calculation type
+			C++(mfc?)
+	*different screens per calculation type(change the screen,no popup)
 	*after a calculation gives shows 3 options in the same window as the results:
 		-save the result in a file
 		-do another of the same type erasing results
@@ -26,6 +26,7 @@ n.	make ui:
 
 n+1.polish ui:
 	*add dark mode/theme option
+	*top select button
 	*add calculation time in lower bar
 	*button sounds?...maybe? (can be really annoying though, include option to mute)
 	*polish code

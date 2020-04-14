@@ -12,7 +12,7 @@ PrimeFactor::PrimeFactor(shared_ptr <PrimeLibrary> l) : Check(make_unique <Prime
 {
 }
 
-vector<unsigned long long> PrimeFactor::factor(unsigned long long num)//factorize number
+vector<double> PrimeFactor::factor(double num)//factorize number
 {
 
 	Divisors.~vector();
@@ -30,7 +30,7 @@ vector<unsigned long long> PrimeFactor::factor(unsigned long long num)//factoriz
 
 		}
 		else {
-			unsigned long long divisor = 0;
+			double divisor = 0;
 			divisor = Div->N_Div(num);
 			Divisors.push_back(divisor);
 			num /= divisor;
