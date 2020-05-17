@@ -96,7 +96,7 @@ void Fraction::CalcNewFraction()//calculates the new fraction by way of prime fa
 		NumeratorVector.resize(2000);//could maybe be removed
 		DenominatorVector.resize(2000);
 
-		future < vector<uint64_t> > fut_num = async(launch::async, &Fraction::AsyncFactor, this, Numerator);//needs to be tested and probably debugged
+		future < vector<uint64_t> > fut_num = async(launch::async, &Fraction::AsyncFactor, this, Numerator);//needs to be tested and is probably debugged
 		future < vector<uint64_t> > fut_denom = async(launch::async, &Fraction::AsyncFactor, this, Denominator);
 
 		//get the sets of primes that make up the numbers
@@ -122,7 +122,7 @@ void Fraction::CalcNewFraction()//calculates the new fraction by way of prime fa
 		std::set_difference(DenominatorVector.begin(), DenominatorVector.end(), NumeratorVector.begin(), NumeratorVector.end(), inserter(t_denomV, t_denomV.begin()));
 
 		//multiply the sets to get the resulting number
-		for (const uint64_t i : t_numerV)//update to a algorithm
+		for (const uint64_t i : t_numerV)//update to a algorithm [see CodeSnippets]
 			t_numerI *= i;
 
 		for (const uint64_t i : t_denomV)
@@ -139,7 +139,7 @@ void Fraction::CalcNewFraction()//calculates the new fraction by way of prime fa
 
 string Fraction::inputSanitizer(string input)
 {
-	regex rgx("(\\d+\\/\\d+)");//apperently c++ uses uint64_t escape sequences
+	regex rgx("(\\d+\\/\\d+)");//apparently c++ uses uint64_t escape sequences
 	smatch match;
 	const bool mb=regex_search(input,match,rgx, regex_constants::match_any);
 	if (!mb) {//move to exception, with reentry possibillity
