@@ -11,10 +11,10 @@
 n.	make ui:
 	*only for windows (c# allows full .NET4)
 		-language options include:
-			C#
+			C#(would need to rewriteand recompile c++ to function as a DLL)
 			XAML
-			JS
-			C++(mfc?)
+			JS(nope)
+			C++(mfc?atl?)
 	*different screens per calculation type(change the screen,no popup)
 	*after a calculation gives shows 3 options in the same window as the results:
 		-save the result in a file
@@ -27,7 +27,7 @@ n.	make ui:
 n+1.polish ui:
 	*add dark mode/theme option
 	*top select button
-	*add calculation time in lower bar
+	*add calculation time in lower bar(is going to be nigh in impossible to get even somewhat accurate)
 	*button sounds?...maybe? (can be really annoying though, include option to mute)
 	*polish code
 	*maybe also optimize backend?

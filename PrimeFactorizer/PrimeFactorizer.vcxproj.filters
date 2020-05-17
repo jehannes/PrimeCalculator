@@ -33,7 +33,7 @@
     <ClCompile Include="PrimeLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="STDlibs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClInclude Include="Fraction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="PrimeLibrary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PrimeLibrary.h">
+    <ClInclude Include="STDlibs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -64,5 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ToDo.txt" />
+    <Text Include="CodeSnippets.txt" />
   </ItemGroup>
 </Project>

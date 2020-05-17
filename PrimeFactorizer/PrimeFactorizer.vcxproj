@@ -166,7 +166,7 @@
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <FloatingPointExceptions>true</FloatingPointExceptions>
       <PreprocessToFile>false</PreprocessToFile>
-      <ShowIncludes>false</ShowIncludes>
+      <ShowIncludes>true</ShowIncludes>
       <CallingConvention>VectorCall</CallingConvention>
       <ExpandAttributedSource>false</ExpandAttributedSource>
       <UseUnicodeForAssemblerListing>true</UseUnicodeForAssemblerListing>
@@ -182,7 +182,7 @@
   <ItemGroup>
     <ClCompile Include="Fraction.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="STDlibs.cpp" />
     <ClCompile Include="PrimeCheck.cpp" />
     <ClCompile Include="PrimeDivisor.cpp" />
     <ClCompile Include="PrimeFactor.cpp" />
@@ -194,12 +194,13 @@
     <ClInclude Include="PrimeDivisor.h" />
     <ClInclude Include="PrimeFactor.h" />
     <ClInclude Include="PrimeLibrary.h" />
-    <ClInclude Include="pch.h" />
+    <ClInclude Include="STDlibs.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PrimeFactorizer.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CodeSnippets.txt" />
     <Text Include="ToDo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

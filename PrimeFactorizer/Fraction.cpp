@@ -1,5 +1,5 @@
 #include "Fraction.h"
-#include "pch.h"
+#include "STDlibs.h"
 
 Fraction::Fraction(shared_ptr <PrimeLibrary> l) :PF(make_shared <PrimeFactor>(l)), Numerator(0), Denominator(0)
 {
@@ -93,7 +93,7 @@ void Fraction::CalcNewFraction()//calculates the new fraction by way of prime fa
 		uint64_t t_numerI = 1, t_denomI = 1;
 		vector <uint64_t> t_numerV, t_denomV;
 
-		NumeratorVector.resize(2000);
+		NumeratorVector.resize(2000);//could maybe be removed
 		DenominatorVector.resize(2000);
 
 		future < vector<uint64_t> > fut_num = async(launch::async, &Fraction::AsyncFactor, this, Numerator);//needs to be tested and probably debugged
@@ -122,7 +122,7 @@ void Fraction::CalcNewFraction()//calculates the new fraction by way of prime fa
 		std::set_difference(DenominatorVector.begin(), DenominatorVector.end(), NumeratorVector.begin(), NumeratorVector.end(), inserter(t_denomV, t_denomV.begin()));
 
 		//multiply the sets to get the resulting number
-		for (const uint64_t i : t_numerV)
+		for (const uint64_t i : t_numerV)//update to a algorithm
 			t_numerI *= i;
 
 		for (const uint64_t i : t_denomV)
@@ -142,7 +142,7 @@ string Fraction::inputSanitizer(string input)
 	regex rgx("(\\d+\\/\\d+)");//apperently c++ uses uint64_t escape sequences
 	smatch match;
 	const bool mb=regex_search(input,match,rgx, regex_constants::match_any);
-	if (!mb) {
+	if (!mb) {//move to exception, with reentry possibillity
 		cout << "input error,shutting down";
 		ExitProcess(0xff);
 	}
