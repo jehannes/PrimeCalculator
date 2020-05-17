@@ -13,13 +13,12 @@ public:
 	uint64_t getNumerator();
 	uint64_t getDenominator();
 	string getFractionString();
-	string SimplifyFraction();
 
 private:
 	shared_ptr <PrimeFactor> PF;
 	vector <uint64_t> AsyncFactor(uint64_t);
-	vector <uint64_t> numerator, denominator;
-	uint64_t numeratorI,denominatorI;
+	vector <uint64_t> NumeratorVector, DenominatorVector;
+	uint64_t Numerator,Denominator;
 	bool calcstate;
 	void CalcNewFraction();
 	string inputSanitizer(string input);

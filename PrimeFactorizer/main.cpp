@@ -41,7 +41,7 @@ int main(void) {
 
 		Frac->setFraction(num);
 		system("CLS");
-		cout << Frac->SimplifyFraction();
+		cout << Frac->getFractionString();
 
 		cout << "\n\n\n";
 

@@ -33,15 +33,16 @@ uint64_t PrimeDivisor::N_Div(uint64_t input) {
 			DivPrime = FnPrime();
 		}
 		CurPrime = 0;
-		return 1;//it really shouldn't get here
+		return 1;//it really shouldn't get here,throw execption
 	}
 }
 
-uint64_t PrimeDivisor::FnPrime() {//todo make dependend on run type, could look through library
+uint64_t PrimeDivisor::FnPrime() {
+	//todo make dependend on run type, could look through library
 	//use iterator to keep track of point in library
 
 	uint64_t number = 2;
-	for (; number < DBL_MAX; number++) {
+	for (; number < UINT64_MAX; number++) {
 		if (Checker->is_prime(number) && number > CurPrime) {
 			break;
 		}

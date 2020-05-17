@@ -1,7 +1,7 @@
 #include "Fraction.h"
 #include "pch.h"
 
-Fraction::Fraction(shared_ptr <PrimeLibrary> l) :PF(make_shared <PrimeFactor>(l)), numeratorI(0), denominatorI(0)
+Fraction::Fraction(shared_ptr <PrimeLibrary> l) :PF(make_shared <PrimeFactor>(l)), Numerator(0), Denominator(0)
 {
 }
 
@@ -23,13 +23,13 @@ void Fraction::setFraction(string input)
 	}
 	
 	try {
-		numeratorI = stoull(temp);
+		Numerator = stoull(temp);
 
 		if (i_s != input.size()) {
-			denominatorI = stoull(input);
+			Denominator = stoull(input);
 		}
 		else {
-			denominatorI = 1;
+			Denominator = 1;
 		}
 	}
 	catch(const out_of_range & oor){
@@ -49,49 +49,34 @@ void Fraction::setFraction(string input)
 
 void Fraction::setFraction(uint64_t numer, uint64_t denom) noexcept
 {
-	numeratorI = numer;
-	denominatorI = denom;
+	Numerator = numer;
+	Denominator = denom;
 }
 
 uint64_t Fraction::getNumerator()
 {
 	CalcNewFraction();
-	return numeratorI;
+	return Numerator;
 }
 
 uint64_t Fraction::getDenominator()
 {
 	CalcNewFraction();
-	return denominatorI;
+	return Denominator;
 }
 
-string Fraction::getFractionString()
+
+string Fraction::getFractionString()//returns a new string for in the form numerator/denominator ready for printing
 {
 	CalcNewFraction();
 
 	string g_string = "";
 
-	g_string.append(to_string(numeratorI));//put the numerator in the string
+	g_string.append(to_string(Numerator));//put the numerator in the string
 
-	if (denominatorI != 1) {//check if the denominator isn't 1
+	if (Denominator != 1) {//check if the denominator isn't 1
 		g_string.append("/");
-		g_string.append(to_string(denominatorI));
-	}
-
-	return g_string;
-}
-
-string Fraction::SimplifyFraction()//returns a new string for in the form numerator/denominator ready for printing
-{
-	CalcNewFraction();
-
-	string g_string = "";
-
-	g_string.append(to_string(numeratorI));//put the numerator in the string
-
-	if (denominatorI != 1) {//check if the denominator isn't 1
-		g_string.append("/");
-		g_string.append(to_string(denominatorI));
+		g_string.append(to_string(Denominator));
 	}
 
 	return g_string;
@@ -108,33 +93,33 @@ void Fraction::CalcNewFraction()//calculates the new fraction by way of prime fa
 		uint64_t t_numerI = 1, t_denomI = 1;
 		vector <uint64_t> t_numerV, t_denomV;
 
-		numerator.resize(2000);
-		denominator.resize(2000);
+		NumeratorVector.resize(2000);
+		DenominatorVector.resize(2000);
 
-		future < vector<uint64_t> > fut_num = async(launch::async, &Fraction::AsyncFactor, this, numeratorI);//needs to be tested and probably debugged
-		future < vector<uint64_t> > fut_denom = async(launch::async, &Fraction::AsyncFactor, this, denominatorI);
+		future < vector<uint64_t> > fut_num = async(launch::async, &Fraction::AsyncFactor, this, Numerator);//needs to be tested and probably debugged
+		future < vector<uint64_t> > fut_denom = async(launch::async, &Fraction::AsyncFactor, this, Denominator);
 
 		//get the sets of primes that make up the numbers
 		if (fut_num.valid() && fut_denom.valid()) {
-			numerator = fut_num.get();
-			denominator = fut_denom.get();
+			NumeratorVector = fut_num.get();
+			DenominatorVector = fut_denom.get();
 		}
 		else {
 			throw exception("future exception");
 		}
 
-		numerator.shrink_to_fit();
-		denominator.shrink_to_fit();
+		NumeratorVector.shrink_to_fit();
+		DenominatorVector.shrink_to_fit();
 
 		//if needed, sort the sets
-		if (!is_sorted(numerator.begin(), numerator.end()))
-			sort(numerator.begin(), numerator.end());
-		if (!is_sorted(denominator.begin(), denominator.end()))
-			sort(denominator.begin(), denominator.end());
+		if (!is_sorted(NumeratorVector.begin(), NumeratorVector.end()))
+			sort(NumeratorVector.begin(), NumeratorVector.end());
+		if (!is_sorted(DenominatorVector.begin(), DenominatorVector.end()))
+			sort(DenominatorVector.begin(), DenominatorVector.end());
 
 		//get the difference between the sets for each set
-		std::set_difference(numerator.begin(), numerator.end(), denominator.begin(), denominator.end(), inserter(t_numerV, t_numerV.begin()));
-		std::set_difference(denominator.begin(), denominator.end(), numerator.begin(), numerator.end(), inserter(t_denomV, t_denomV.begin()));
+		std::set_difference(NumeratorVector.begin(), NumeratorVector.end(), DenominatorVector.begin(), DenominatorVector.end(), inserter(t_numerV, t_numerV.begin()));
+		std::set_difference(DenominatorVector.begin(), DenominatorVector.end(), NumeratorVector.begin(), NumeratorVector.end(), inserter(t_denomV, t_denomV.begin()));
 
 		//multiply the sets to get the resulting number
 		for (const uint64_t i : t_numerV)
@@ -144,8 +129,8 @@ void Fraction::CalcNewFraction()//calculates the new fraction by way of prime fa
 			t_denomI *= i;
 
 		//set the object values
-		numeratorI = t_numerI;
-		denominatorI = t_denomI;
+		Numerator = t_numerI;
+		Denominator = t_denomI;
 		calcstate = true;
 	}
 	
