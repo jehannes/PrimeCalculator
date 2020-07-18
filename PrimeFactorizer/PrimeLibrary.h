@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pch.h"
+#include "STDlibs.h"
 
 using namespace std;
 
@@ -10,7 +10,7 @@ public:
 	PrimeLibrary();
 	PrimeLibrary(uint16_t mode);
 
-	vector <unsigned long long> PrimeVect;
+	vector <uint64_t> PrimeVect;
 	bool RunType;
 
 private:

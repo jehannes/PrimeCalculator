@@ -62,7 +62,7 @@ void PrimeLibrary::LoadLib(string fname)
 				break;
 			}
 			else {
-				PrimeVect.push_back((unsigned long long)stoi(str));//change to stoull or stoul
+				PrimeVect.push_back((uint64_t)stoull(str));
 			}
 		}
 

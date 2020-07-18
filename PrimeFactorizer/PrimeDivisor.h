@@ -1,5 +1,5 @@
 #pragma once
-#include "pch.h"
+#include "STDlibs.h"
 
 #include "PrimeCheck.h"
 
@@ -10,12 +10,12 @@ class PrimeDivisor
 public:
 	PrimeDivisor();
 	PrimeDivisor(shared_ptr <PrimeLibrary> l);
-	unsigned long long N_Div(unsigned long long input);
+	uint64_t N_Div(uint64_t input);
 
 private:
-	unsigned long long FnPrime();
+	uint64_t FnPrime();
 	unique_ptr <PrimeCheck> Checker;
-	unsigned long long CurPrime;
+	uint64_t CurPrime;
 
 	shared_ptr <PrimeLibrary> Lib;
 };

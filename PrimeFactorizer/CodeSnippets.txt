@@ -1,0 +1,8 @@
+//for multiplying a vector/ list together
+//thx tp user chris (https://stackoverflow.com/users/962089/chris) on stack overflow -> https://stackoverflow.com/questions/29146175/c-multiplying-elements-in-a-vector
+
+#include <numeric>
+
+using std::begin;
+using std::end;
+auto multi = std::accumulate(begin(vars), end(vars), 1, std::multiplies<double>());

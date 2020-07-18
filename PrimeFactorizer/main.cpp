@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "STDlibs.h"
 #include "PrimeFactor.h"
 #include "Fraction.h"
 
@@ -12,9 +12,9 @@ shared_ptr <PrimeLibrary> Lib;
 int main(void) {
 
 
-	//	vector <unsigned long long> Divs;
+	//	vector <uint64_t> Divs;
 
-		//unsigned long long num;
+		//uint64_t num;
 	string num;
 	int mode = 0;
 	string more;
@@ -33,7 +33,7 @@ int main(void) {
 
 				Divs = fac->factor(num);
 				cout << "the factors of " << num << " are:\n";
-				for (unsigned long long i : Divs) {
+				for (uint64_t i : Divs) {
 					cout << i << " ";
 				}
 				Frac->setFraction(num);
@@ -41,14 +41,13 @@ int main(void) {
 
 		Frac->setFraction(num);
 		system("CLS");
-		cout << Frac->SimplifyFraction();
+		cout << Frac->getFractionString();
 
 		cout << "\n\n\n";
 
 		cout << "more?  ";
 		cin >> more;
 		if (more == "Y" || more == "y") {
-			//	Divs.~vector();
 			Lib.reset();
 			Frac.reset();
 			system("CLS");

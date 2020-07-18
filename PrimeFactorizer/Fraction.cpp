@@ -1,7 +1,7 @@
 #include "Fraction.h"
-#include "pch.h"
+#include "STDlibs.h"
 
-Fraction::Fraction(shared_ptr <PrimeLibrary> l) :PF(make_unique <PrimeFactor>(l)), numeratorI(0), denominatorI(0)
+Fraction::Fraction(shared_ptr <PrimeLibrary> l) :PF(make_shared <PrimeFactor>(l)), Numerator(0), Denominator(0)
 {
 }
 
@@ -9,7 +9,7 @@ void Fraction::setFraction(string input)
 {
 	string temp = "";
 	input = inputSanitizer(input);
-	const unsigned long long i_s = input.size();
+	const uint64_t i_s = input.size();
 
 	for (int i = 0; i < input.size(); i++) {
 		if (input.at(i) == '/') {
@@ -21,25 +21,25 @@ void Fraction::setFraction(string input)
 		}
 
 	}
-
+	
 	try {
-		numeratorI = stoull(temp);
+		Numerator = stoull(temp);
 
 		if (i_s != input.size()) {
-			denominatorI = stoull(input);
+			Denominator = stoull(input);
 		}
 		else {
-			denominatorI = 1;
+			Denominator = 1;
 		}
 	}
 	catch(const out_of_range & oor){
 		system("CLS");
 		cerr << "Out of Range error: " << oor.what() << '\n';
-		cout << "number given entered exceeds " << ULLONG_MAX;
+		cout << "number given exceeds " << UINT64_MAX;
 		Sleep(4000);
 		system("CLS");
 
-		cout << "enter new fraction: ";
+		cout << "enter new fraction: ";//want to continue?
 		string nfrac;
 		cin >> nfrac;
 		setFraction(nfrac);
@@ -47,65 +47,102 @@ void Fraction::setFraction(string input)
 	}
 }
 
-void Fraction::setFraction(unsigned long long numer, unsigned long long denom) noexcept
+void Fraction::setFraction(uint64_t numer, uint64_t denom) noexcept
 {
-	numeratorI = numer;
-	denominatorI = denom;
+	Numerator = numer;
+	Denominator = denom;
 }
 
-string Fraction::SimplifyFraction()//returns a new string for in the form numerator/denominator ready for printing
+uint64_t Fraction::getNumerator()
 {
-	CnFrac();
+	CalcNewFraction();
+	return Numerator;
+}
+
+uint64_t Fraction::getDenominator()
+{
+	CalcNewFraction();
+	return Denominator;
+}
+
+
+string Fraction::getFractionString()//returns a new string for in the form numerator/denominator ready for printing
+{
+	CalcNewFraction();
 
 	string g_string = "";
 
-	g_string.append(to_string(numeratorI));//put the numerator in the string
+	g_string.append(to_string(Numerator));//put the numerator in the string
 
-	if (denominatorI != 1) {//check if the denominator isn't 1
+	if (Denominator != 1) {//check if the denominator isn't 1
 		g_string.append("/");
-		g_string.append(to_string(denominatorI));
+		g_string.append(to_string(Denominator));
 	}
 
 	return g_string;
 }
 
-void Fraction::CnFrac()//calculates the new fraction by way of prime factorization
+vector<uint64_t> Fraction::AsyncFactor(uint64_t ld)
 {
-	unsigned long long t_numerI = 1, t_denomI = 1;
-	vector <unsigned long long> t_numerV, t_denomV;
+	return (PF->factor(ld));
+}
 
-	//get the sets of primes that make up the numbers
-	numerator = PF->factor(numeratorI);
-	denominator = PF->factor(denominatorI);
+void Fraction::CalcNewFraction()//calculates the new fraction by way of prime factorization
+{//maybe check if it is a perfect fraction first?
+	if (!calcstate) {
+		uint64_t t_numerI = 1, t_denomI = 1;
+		vector <uint64_t> t_numerV, t_denomV;
 
-	//if needed, sort the sets
-	if (!is_sorted(numerator.begin(), numerator.end()))
-		sort(numerator.begin(), numerator.end());
-	if (!is_sorted(denominator.begin(), denominator.end()))
-		sort(denominator.begin(), denominator.end());
+		NumeratorVector.resize(2000);//could maybe be removed
+		DenominatorVector.resize(2000);
 
-	//get the difference between the sets for each set
-	set_difference(numerator.begin(), numerator.end(), denominator.begin(), denominator.end(), inserter(t_numerV, t_numerV.begin()));
-	set_difference(denominator.begin(), denominator.end(), numerator.begin(), numerator.end(), inserter(t_denomV, t_denomV.begin()));
+		future < vector<uint64_t> > fut_num = async(launch::async, &Fraction::AsyncFactor, this, Numerator);//needs to be tested and is probably debugged
+		future < vector<uint64_t> > fut_denom = async(launch::async, &Fraction::AsyncFactor, this, Denominator);
 
-	//multiply the sets to get the resulting number
-	for (const unsigned long long i : t_numerV)
-		t_numerI *= i;
+		//get the sets of primes that make up the numbers
+		if (fut_num.valid() && fut_denom.valid()) {
+			NumeratorVector = fut_num.get();
+			DenominatorVector = fut_denom.get();
+		}
+		else {
+			throw exception("future exception");
+		}
 
-	for (const unsigned long long i : t_denomV)
-		t_denomI *= i;
+		NumeratorVector.shrink_to_fit();
+		DenominatorVector.shrink_to_fit();
 
-	//set the object values
-	numeratorI = t_numerI;
-	denominatorI = t_denomI;
+		//if needed, sort the sets
+		if (!is_sorted(NumeratorVector.begin(), NumeratorVector.end()))
+			sort(NumeratorVector.begin(), NumeratorVector.end());
+		if (!is_sorted(DenominatorVector.begin(), DenominatorVector.end()))
+			sort(DenominatorVector.begin(), DenominatorVector.end());
+
+		//get the difference between the sets for each set
+		std::set_difference(NumeratorVector.begin(), NumeratorVector.end(), DenominatorVector.begin(), DenominatorVector.end(), inserter(t_numerV, t_numerV.begin()));
+		std::set_difference(DenominatorVector.begin(), DenominatorVector.end(), NumeratorVector.begin(), NumeratorVector.end(), inserter(t_denomV, t_denomV.begin()));
+
+		//multiply the sets to get the resulting number
+		for (const uint64_t i : t_numerV)//update to a algorithm [see CodeSnippets]
+			t_numerI *= i;
+
+		for (const uint64_t i : t_denomV)
+			t_denomI *= i;
+
+		//set the object values
+		Numerator = t_numerI;
+		Denominator = t_denomI;
+		calcstate = true;
+	}
+	
+
 }
 
 string Fraction::inputSanitizer(string input)
 {
-	regex rgx("(\\d+\\/\\d+)");//apperently c++ uses double escape sequences
+	regex rgx("(\\d+\\/\\d+)");//apparently c++ uses uint64_t escape sequences
 	smatch match;
 	const bool mb=regex_search(input,match,rgx, regex_constants::match_any);
-	if (!mb) {
+	if (!mb) {//move to exception, with reentry possibillity
 		cout << "input error,shutting down";
 		ExitProcess(0xff);
 	}

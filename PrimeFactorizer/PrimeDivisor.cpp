@@ -8,14 +8,14 @@ PrimeDivisor::PrimeDivisor(shared_ptr <PrimeLibrary> l) : Lib(l), Checker(make_u
 {
 }
 
-unsigned long long PrimeDivisor::N_Div(unsigned long long input) {
+uint64_t PrimeDivisor::N_Div(uint64_t input) {
 	if (Checker->is_prime(input)) {
 		return input;
 	}
 
 	if (Lib->RunType && Lib->PrimeVect.back() >= input) {
 
-		for (const unsigned long long i : Lib->PrimeVect) {
+		for (const uint64_t i : Lib->PrimeVect) {
 			if (input % i == 0) {
 				return i;
 			}
@@ -23,8 +23,7 @@ unsigned long long PrimeDivisor::N_Div(unsigned long long input) {
 		return 1;
 	}
 	else {
-		unsigned long long DivPrime = FnPrime();
-
+		uint64_t DivPrime = FnPrime();
 
 		while (DivPrime <= input) {
 			if (input % DivPrime == 0) {
@@ -34,13 +33,16 @@ unsigned long long PrimeDivisor::N_Div(unsigned long long input) {
 			DivPrime = FnPrime();
 		}
 		CurPrime = 0;
-		return 1;//it really shouldn't get here
+		return 1;//it really shouldn't get here,throw execption
 	}
 }
 
-unsigned long long PrimeDivisor::FnPrime() {//todo make dependend on run type, could look through library
-	unsigned long long number = 2;
-	for (; number < UINT_FAST64_MAX; number++) {
+uint64_t PrimeDivisor::FnPrime() {
+	//todo make dependend on run type, could look through library
+	//use iterator to keep track of point in library
+
+	uint64_t number = 2;
+	for (; number < UINT64_MAX; number++) {
 		if (Checker->is_prime(number) && number > CurPrime) {
 			break;
 		}
