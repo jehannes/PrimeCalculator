@@ -8,6 +8,8 @@
 
 3.	make root factorization funtionallity (form: [exp]root([number])), where if exp is not existant it is 2
 
+4.	optimize large library loading
+
 n.	make ui:
 	*only for windows (allows full .NET4)
 		-language options include:
